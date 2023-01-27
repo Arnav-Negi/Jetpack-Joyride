@@ -1,0 +1,9 @@
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/CMakeFiles/app.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/CMakeFiles/glad.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/libraries/glfw/CMakeFiles/edit_cache.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/libraries/glfw/CMakeFiles/rebuild_cache.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/libraries/glfw/src/CMakeFiles/glfw.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/libraries/glfw/src/CMakeFiles/edit_cache.dir
+/home/arnav/courses/4/cg/ass1/cmake-build-debug/libraries/glfw/src/CMakeFiles/rebuild_cache.dir
