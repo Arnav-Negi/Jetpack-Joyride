@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glad/include
+C_INCLUDES = -I/home/arnav/courses/4/cg/ass1/libraries/glad/include
 
 C_FLAGS = 
 

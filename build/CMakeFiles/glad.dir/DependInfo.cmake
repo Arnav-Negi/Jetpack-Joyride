@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glad/src/glad.c" "CMakeFiles/glad.dir/libraries/glad/src/glad.c.o" "gcc" "CMakeFiles/glad.dir/libraries/glad/src/glad.c.o.d"
+  "/home/arnav/courses/4/cg/ass1/libraries/glad/src/glad.c" "CMakeFiles/glad.dir/libraries/glad/src/glad.c.o" "gcc" "CMakeFiles/glad.dir/libraries/glad/src/glad.c.o.d"
   )
 
 # Targets to which this target links.

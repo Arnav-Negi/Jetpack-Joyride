@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glfw/include -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glfw/src -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/build/libraries/glfw/src
+C_INCLUDES = -I/home/arnav/courses/4/cg/ass1/libraries/glfw/include -I/home/arnav/courses/4/cg/ass1/libraries/glfw/src -I/home/arnav/courses/4/cg/ass1/build/libraries/glfw/src
 
 C_FLAGS = -fPIC -Wall -std=c99
 

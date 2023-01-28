@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DGLFW_INCLUDE_NONE
 
-CXX_INCLUDES = -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/include -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glfw/include -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glad/include -I/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glm -I/usr/include/freetype2
+CXX_INCLUDES = -I/home/arnav/courses/4/cg/ass1/include -I/home/arnav/courses/4/cg/ass1/libraries/glfw/include -I/home/arnav/courses/4/cg/ass1/libraries/glad/include -I/home/arnav/courses/4/cg/ass1/libraries/glm -I/usr/include/freetype2
 
 CXX_FLAGS = -std=gnu++11
 

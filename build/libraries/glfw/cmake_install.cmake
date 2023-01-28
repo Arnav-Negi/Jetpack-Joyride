@@ -1,4 +1,4 @@
-# Install script for directory: /home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/libraries/glfw
+# Install script for directory: /home/arnav/courses/4/cg/ass1/libraries/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,6 +44,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/build/libraries/glfw/src/cmake_install.cmake")
+  include("/home/arnav/courses/4/cg/ass1/build/libraries/glfw/src/cmake_install.cmake")
 endif()
 

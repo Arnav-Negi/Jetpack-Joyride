@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023
+CMAKE_SOURCE_DIR = /home/arnav/courses/4/cg/ass1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/build
+CMAKE_BINARY_DIR = /home/arnav/courses/4/cg/ass1/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/build/CMakeFiles /home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arnav/courses/4/cg/ass1/build/CMakeFiles /home/arnav/courses/4/cg/ass1/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arnav/courses/4/cg/Spring2023-CG-Resources/Boilerplate2023/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arnav/courses/4/cg/ass1/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -179,6 +179,78 @@ libraries/glad/src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/libraries/glad/src/glad.c.s
 .PHONY : libraries/glad/src/glad.c.s
 
+src/background.o: src/background.cpp.o
+.PHONY : src/background.o
+
+# target to build an object file
+src/background.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/background.cpp.o
+.PHONY : src/background.cpp.o
+
+src/background.i: src/background.cpp.i
+.PHONY : src/background.i
+
+# target to preprocess a source file
+src/background.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/background.cpp.i
+.PHONY : src/background.cpp.i
+
+src/background.s: src/background.cpp.s
+.PHONY : src/background.s
+
+# target to generate assembly for a file
+src/background.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/background.cpp.s
+.PHONY : src/background.cpp.s
+
+src/game.o: src/game.cpp.o
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/game_object.o: src/game_object.cpp.o
+.PHONY : src/game_object.o
+
+# target to build an object file
+src/game_object.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/game_object.cpp.o
+.PHONY : src/game_object.cpp.o
+
+src/game_object.i: src/game_object.cpp.i
+.PHONY : src/game_object.i
+
+# target to preprocess a source file
+src/game_object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/game_object.cpp.i
+.PHONY : src/game_object.cpp.i
+
+src/game_object.s: src/game_object.cpp.s
+.PHONY : src/game_object.s
+
+# target to generate assembly for a file
+src/game_object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/game_object.cpp.s
+.PHONY : src/game_object.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -203,6 +275,102 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/resource_manager.o: src/resource_manager.cpp.o
+.PHONY : src/resource_manager.o
+
+# target to build an object file
+src/resource_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/resource_manager.cpp.o
+.PHONY : src/resource_manager.cpp.o
+
+src/resource_manager.i: src/resource_manager.cpp.i
+.PHONY : src/resource_manager.i
+
+# target to preprocess a source file
+src/resource_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/resource_manager.cpp.i
+.PHONY : src/resource_manager.cpp.i
+
+src/resource_manager.s: src/resource_manager.cpp.s
+.PHONY : src/resource_manager.s
+
+# target to generate assembly for a file
+src/resource_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/resource_manager.cpp.s
+.PHONY : src/resource_manager.cpp.s
+
+src/shader.o: src/shader.cpp.o
+.PHONY : src/shader.o
+
+# target to build an object file
+src/shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/shader.cpp.o
+.PHONY : src/shader.cpp.o
+
+src/shader.i: src/shader.cpp.i
+.PHONY : src/shader.i
+
+# target to preprocess a source file
+src/shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/shader.cpp.i
+.PHONY : src/shader.cpp.i
+
+src/shader.s: src/shader.cpp.s
+.PHONY : src/shader.s
+
+# target to generate assembly for a file
+src/shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/shader.cpp.s
+.PHONY : src/shader.cpp.s
+
+src/sprite_renderer.o: src/sprite_renderer.cpp.o
+.PHONY : src/sprite_renderer.o
+
+# target to build an object file
+src/sprite_renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/sprite_renderer.cpp.o
+.PHONY : src/sprite_renderer.cpp.o
+
+src/sprite_renderer.i: src/sprite_renderer.cpp.i
+.PHONY : src/sprite_renderer.i
+
+# target to preprocess a source file
+src/sprite_renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/sprite_renderer.cpp.i
+.PHONY : src/sprite_renderer.cpp.i
+
+src/sprite_renderer.s: src/sprite_renderer.cpp.s
+.PHONY : src/sprite_renderer.s
+
+# target to generate assembly for a file
+src/sprite_renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/sprite_renderer.cpp.s
+.PHONY : src/sprite_renderer.cpp.s
+
+src/texture.o: src/texture.cpp.o
+.PHONY : src/texture.o
+
+# target to build an object file
+src/texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture.cpp.o
+.PHONY : src/texture.cpp.o
+
+src/texture.i: src/texture.cpp.i
+.PHONY : src/texture.i
+
+# target to preprocess a source file
+src/texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture.cpp.i
+.PHONY : src/texture.cpp.i
+
+src/texture.s: src/texture.cpp.s
+.PHONY : src/texture.s
+
+# target to generate assembly for a file
+src/texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/texture.cpp.s
+.PHONY : src/texture.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -217,9 +385,30 @@ help:
 	@echo "... libraries/glad/src/glad.o"
 	@echo "... libraries/glad/src/glad.i"
 	@echo "... libraries/glad/src/glad.s"
+	@echo "... src/background.o"
+	@echo "... src/background.i"
+	@echo "... src/background.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/game_object.o"
+	@echo "... src/game_object.i"
+	@echo "... src/game_object.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/resource_manager.o"
+	@echo "... src/resource_manager.i"
+	@echo "... src/resource_manager.s"
+	@echo "... src/shader.o"
+	@echo "... src/shader.i"
+	@echo "... src/shader.s"
+	@echo "... src/sprite_renderer.o"
+	@echo "... src/sprite_renderer.i"
+	@echo "... src/sprite_renderer.s"
+	@echo "... src/texture.o"
+	@echo "... src/texture.i"
+	@echo "... src/texture.s"
 .PHONY : help
 
 
