@@ -105,6 +105,14 @@ build CMakeFiles/app.dir/src/sprite_renderer.cpp.o: CXX_COMPILER__app_Debug /hom
   OBJECT_DIR = CMakeFiles/app.dir
   OBJECT_FILE_DIR = CMakeFiles/app.dir/src
 
+build CMakeFiles/app.dir/src/text_renderer.cpp.o: CXX_COMPILER__app_Debug /home/arnav/courses/4/cg/ass1/src/text_renderer.cpp || cmake_object_order_depends_target_app
+  DEFINES = -DGLFW_INCLUDE_NONE
+  DEP_FILE = CMakeFiles/app.dir/src/text_renderer.cpp.o.d
+  FLAGS = -g -std=gnu++11
+  INCLUDES = -I/home/arnav/courses/4/cg/ass1/include -I/home/arnav/courses/4/cg/ass1/libraries/glfw/include -I/home/arnav/courses/4/cg/ass1/libraries/glad/include -I/home/arnav/courses/4/cg/ass1/libraries/glm -I/usr/include/freetype2
+  OBJECT_DIR = CMakeFiles/app.dir
+  OBJECT_FILE_DIR = CMakeFiles/app.dir/src
+
 build CMakeFiles/app.dir/src/texture.cpp.o: CXX_COMPILER__app_Debug /home/arnav/courses/4/cg/ass1/src/texture.cpp || cmake_object_order_depends_target_app
   DEFINES = -DGLFW_INCLUDE_NONE
   DEP_FILE = CMakeFiles/app.dir/src/texture.cpp.o.d
@@ -121,7 +129,7 @@ build CMakeFiles/app.dir/src/texture.cpp.o: CXX_COMPILER__app_Debug /home/arnav/
 #############################################
 # Link the executable app
 
-build app: CXX_EXECUTABLE_LINKER__app_Debug CMakeFiles/app.dir/src/background.cpp.o CMakeFiles/app.dir/src/game.cpp.o CMakeFiles/app.dir/src/game_object.cpp.o CMakeFiles/app.dir/src/main.cpp.o CMakeFiles/app.dir/src/resource_manager.cpp.o CMakeFiles/app.dir/src/shader.cpp.o CMakeFiles/app.dir/src/sprite_renderer.cpp.o CMakeFiles/app.dir/src/texture.cpp.o | libraries/glfw/src/libglfw3.a libglad.a /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/x86_64-linux-gnu/librt.a /usr/lib/x86_64-linux-gnu/libm.so || libglad.a libraries/glfw/src/libglfw3.a
+build app: CXX_EXECUTABLE_LINKER__app_Debug CMakeFiles/app.dir/src/background.cpp.o CMakeFiles/app.dir/src/game.cpp.o CMakeFiles/app.dir/src/game_object.cpp.o CMakeFiles/app.dir/src/main.cpp.o CMakeFiles/app.dir/src/resource_manager.cpp.o CMakeFiles/app.dir/src/shader.cpp.o CMakeFiles/app.dir/src/sprite_renderer.cpp.o CMakeFiles/app.dir/src/text_renderer.cpp.o CMakeFiles/app.dir/src/texture.cpp.o | libraries/glfw/src/libglfw3.a libglad.a /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/x86_64-linux-gnu/librt.a /usr/lib/x86_64-linux-gnu/libm.so || libglad.a libraries/glfw/src/libglfw3.a
   FLAGS = -g
   LINK_FLAGS = -rdynamic
   LINK_LIBRARIES = libraries/glfw/src/libglfw3.a  libglad.a  -ldl  -lfreetype  -lGL  -lGLEW  -lGL  -lX11  -lGLU  -Wl,-Bstatic  -lrt  -Wl,-Bdynamic  -lm  -ldl  -lGLEW  -lX11  -lGLU

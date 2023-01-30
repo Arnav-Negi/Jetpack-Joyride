@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/arnav/courses/4/cg/ass1/src/resource_manager.cpp" "CMakeFiles/app.dir/src/resource_manager.cpp.o" "gcc" "CMakeFiles/app.dir/src/resource_manager.cpp.o.d"
   "/home/arnav/courses/4/cg/ass1/src/shader.cpp" "CMakeFiles/app.dir/src/shader.cpp.o" "gcc" "CMakeFiles/app.dir/src/shader.cpp.o.d"
   "/home/arnav/courses/4/cg/ass1/src/sprite_renderer.cpp" "CMakeFiles/app.dir/src/sprite_renderer.cpp.o" "gcc" "CMakeFiles/app.dir/src/sprite_renderer.cpp.o.d"
+  "/home/arnav/courses/4/cg/ass1/src/text_renderer.cpp" "CMakeFiles/app.dir/src/text_renderer.cpp.o" "gcc" "CMakeFiles/app.dir/src/text_renderer.cpp.o.d"
   "/home/arnav/courses/4/cg/ass1/src/texture.cpp" "CMakeFiles/app.dir/src/texture.cpp.o" "gcc" "CMakeFiles/app.dir/src/texture.cpp.o.d"
   )
 

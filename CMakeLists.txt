@@ -9,7 +9,7 @@ set(INC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 file(GLOB SOURCES "${SRC_DIR}/*.cpp")
 
 # Executable definition and properties
-add_executable(${PROJECT_NAME} ${SOURCES} src/game.cpp src/shader.cpp include/shader.h src/texture.cpp include/texture.h src/resource_manager.cpp include/resource_manager.h include/sprite_renderer.h src/sprite_renderer.cpp include/game_object.h src/game_object.cpp src/background.cpp include/background.h)
+add_executable(${PROJECT_NAME} ${SOURCES} src/game.cpp src/shader.cpp include/shader.h src/texture.cpp include/texture.h src/resource_manager.cpp include/resource_manager.h include/sprite_renderer.h src/sprite_renderer.cpp include/game_object.h src/game_object.cpp src/background.cpp include/background.h src/text_renderer.cpp include/text_renderer.h)
 target_include_directories(${PROJECT_NAME} PRIVATE "${INC_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
