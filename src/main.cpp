@@ -13,7 +13,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-Game Joyride(SCR_WIDTH, SCR_HEIGHT);
+Game *Joyride = new Game(SCR_WIDTH, SCR_HEIGHT);
 
 int main(int argc, char *argv[])
 {
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 
-    Joyride.Init();
+    Joyride->Init();
 
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
@@ -78,16 +78,16 @@ int main(int argc, char *argv[])
 
         // input
         // -----
-        Joyride.ProcessInput(deltaTime);
+        Joyride->ProcessInput(deltaTime);
 
         // Update game state
-        Joyride.Update(deltaTime);
+        Joyride->Update(deltaTime);
 
         // render
         // ------
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        Joyride.Render();
+        Joyride->Render();
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -96,10 +96,8 @@ int main(int argc, char *argv[])
 
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
-//    glDeleteVertexArrays(1, &VAO);
-//    glDeleteBuffers(1, &VBO);
-//    glDeleteProgram(shaderProgram);
     ResourceManager::Clear();
+    delete Joyride;
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
@@ -117,9 +115,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
-            Joyride.Keys[key] = true;
+            Joyride->Keys[key] = true;
         else if (action == GLFW_RELEASE)
-            Joyride.Keys[key] = false;
+            Joyride->Keys[key] = false;
     }
 }
 

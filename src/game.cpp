@@ -5,7 +5,6 @@ TextRenderer *Text;
 
 Game::Game(unsigned int width, unsigned int height)
         : State(GAME_ACTIVE), Keys(), Width(width), Height(height) {
-
 }
 
 Game::~Game() {
@@ -20,28 +19,27 @@ void Game::Init() {
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
                                       static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
+    ResourceManager::GetShader("sprite").Use().SetVector2f("iResolution", glm::vec2(this->Width, this->Height));
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     // set render-specific controls
     Shader MyShader = ResourceManager::GetShader("sprite");
     Renderer = new SpriteRenderer(MyShader);
     // load textures
-    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/awesomeface.png", true, "sprite");
-    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/BG.png", true, "background");
+    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/mario.png", true, "sprite");
+    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/space.png", true, "background");
     ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/coin.png", true, "coin");
-    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/laser.png", true, "laser");
-    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/glow.png", true, "glow");
+    ResourceManager::LoadTexture("/home/arnav/courses/4/cg/ass1/src/textures/glow.png", false, "glow");
 
 
-    this->HUD = new GameObject(glm::vec2(0, 0), glm::vec2(this->Width, this->Height / 10),
+    this->HUD = new GameObject(glm::vec2(0, 0), glm::vec2(this->Width, this->Height / 12),
                                ResourceManager::GetTexture("glow"), glm::vec3(0), glm::vec2(0));
 
     Text = new TextRenderer(this->Width, this->Height);
-    Text->Load("/home/arnav/courses/4/cg/ass1/src/textures/OCRAEXT.TTF", 24);
+    Text->Load("/home/arnav/courses/4/cg/ass1/src/textures/tnr.TTF", 24);
 
     this->Lvl = 0;
     this->CoinRad = 25;
-
-    this->SpriteAcc = -1000;
+    this->SpriteAcc = -500;
     Renderer->Position = glm::vec2(100, this->Height - Renderer->Size.y);
     Renderer->Velocity = glm::vec2(0, 0);
     Renderer->Rotation = 0;
@@ -55,28 +53,30 @@ void Game::Init() {
 void Game::InitLvl(int lvl) {
     srand(time(NULL));
     this->Lvl = lvl;
-    this->BgDistance = 0;
     this->FgDistance = 0;
 
-    // Difficulty scaling.
+    // Difficulty scaling. ALong with Zapper length
     if (lvl == 0) {
         this->CoinVel = -150;
+        this->BgVelocity = 0.03;
         this->LvlLength = 8;
         this->Score = 0;
     } else if (lvl == 1) {
         this->LvlLength = 12;
         this->CoinVel = -200;
+        this->BgVelocity = 0.04;
     } else {
         this->LvlLength = 16;
         this->CoinVel = -250;
+        this->BgVelocity = 0.05;
     }
+    this->LvlDesign.clear();
+    this->Zappers.clear();
+    this->SpawnZappers();
 
     this->Coins.clear();
     this->SpawnCoins();
     this->State = GAME_ACTIVE;
-
-    this->Zappers.clear();
-    this->SpawnZappers();
 }
 
 float RandomF(float left, float right) {
@@ -93,10 +93,11 @@ void Game::SpawnCoins() {
     // Coin subunits in sections of length 300 with 50 length buffers in between
     // Subunits of 3 types - zigzag, rectangles, lines
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < this->LvlLength; i++) {
         float startX = RandomF(0, 2 * this->CoinRad);
-        float startY = RandomF(this->HUD->Size.y, this->Height - 100);
-        int state = RandomI(0, 3);
+        int state = (RandomI(1, 3) + this->LvlDesign[i])%3;
+        float startY = this->HUD->Size.y + state*this->Height/3;
+
         this->Coins.push_back(
                 new BallObject(glm::vec2(this->Width + i * 350 + startX, startY), this->CoinRad, glm::vec2(CoinVel, 0),
                                ResourceManager::GetTexture("coin")));
@@ -120,16 +121,18 @@ void Game::SpawnCoins() {
 }
 
 void Game::SpawnZappers() {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < this->LvlLength; i++) {
         float startX = RandomF(0, 50);
-        float startY = RandomF(this->HUD->Size.y, this->Height - 200);
+        int HeightLvl = RandomI(0, 3);
+        float startY = HeightLvl*this->Height/4 + this->HUD->Size.y + 50;
         int state = RandomI(0, 100);
-        if (state < (this->Lvl + 1) * 80) {
+        this->LvlDesign.push_back(HeightLvl);
+        if (state < (this->Lvl + 1) * 20) {
             // rotating
             this->Zappers.push_back(
                     new GameObject(glm::vec2(this->Width + i * 350 + startX, startY),
-                                   glm::vec2(10, this->Lvl * 50 + 150),
-                                   ResourceManager::GetTexture("laser"),
+                                   glm::vec2(20, this->Lvl * 50 + 150),
+                                   ResourceManager::GetTexture("glow"),
                                    glm::vec3(1), glm::vec2(CoinVel, 0)));
             this->Zappers.back()->ZapperRigid = false;
             this->Zappers.back()->Rotation = 0;
@@ -137,8 +140,8 @@ void Game::SpawnZappers() {
             // rigid
             this->Zappers.push_back(
                     new GameObject(glm::vec2(this->Width + i * 350 + startX, startY),
-                                   glm::vec2(10, this->Lvl * 50 + 150),
-                                   ResourceManager::GetTexture("laser"),
+                                   glm::vec2(20, this->Lvl * 50 + 150),
+                                   ResourceManager::GetTexture("glow"),
                                    glm::vec3(1), glm::vec2(CoinVel, 0)));
             this->Zappers.back()->ZapperRigid = true;
             this->Zappers.back()->Rotation = 0;
@@ -147,7 +150,7 @@ void Game::SpawnZappers() {
 }
 
 void Game::Update(float dt) {
-    float NetAcc = this->SpriteAcc + (this->Pressed && !(this->State == GAME_LOSE)) * 1300;
+    float NetAcc = this->SpriteAcc + (this->Pressed && !(this->State == GAME_LOSE)) * 800;
     Renderer->Velocity.y -= NetAcc * dt;
 
     if (Renderer->Velocity.y > 0 && (this->Pressed && !(this->State == GAME_LOSE)))
@@ -165,25 +168,29 @@ void Game::Update(float dt) {
         Renderer->Velocity = glm::vec2(0, 0);
     }
 
-    this->BgDistance += this->BgVelocity * dt;
-
     if (this->State == GAME_ACTIVE) {
         this->FgDistance -= CoinVel * dt;
-        if (this->FgDistance >= this->LvlLength * 400) {
+        if (this->FgDistance >= this->LvlLength * 350 + this->Width + 50) {
             if (this->Lvl == 2) this->Win();
             else {
                 this->Lvl++;
                 this->InitLvl(this->Lvl);
             }
         }
-        this->DoCollisions();
     }
 
+    this->DoCollisions();
+    if (this->State == GAME_LOSE) {
+        this->BgVelocity = fmax(0, this->BgVelocity - 0.2*dt);
+        this->CoinVel = fmin(0, this->CoinVel + 100*dt);
+    }
+
+    this->BgDistance += this->BgVelocity * dt;
     for (auto coinObj: this->Coins) {
-        coinObj->Move(dt, this->Width);
+        coinObj->Move(dt, this->Width, this->CoinVel);
     }
     for (auto zap: this->Zappers) {
-        zap->Move(dt, this->Width);
+        zap->Move(dt, this->Width, this->CoinVel);
     }
 
     if (this->State == GAME_LOSE) this->GameEndTimer -= dt;
@@ -200,13 +207,11 @@ void Game::DoCollisions() {
     for (auto zap: this->Zappers) {
         if (zap->ZapperRigid) {
             if (this->CheckCollision(*zap, *Renderer)) {
-                printf("DEAD\n");
                 if (this->State == GAME_ACTIVE)
                     this->Die();
             }
         }
         else if (this->CheckRotatedCollision(*Renderer, *zap)) {
-            printf("DEAD\n");
             if (this->State == GAME_ACTIVE)
                 this->Die();
         }
@@ -219,13 +224,6 @@ void Game::Win() {
 
 void Game::Die() {
     Renderer->Color = glm::vec3(1.0, 0.0, 0.0);
-    this->BgVelocity = 0;
-    for (auto coin: this->Coins) {
-        coin->Velocity = glm::vec2(0, 0);
-    }
-    for (auto zap: this->Zappers) {
-        zap->Velocity = glm::vec2(0, 0);
-    }
 
     this->State = GAME_LOSE;
 }
@@ -257,36 +255,46 @@ void Game::Render() {
     DistMsg = Msg.str();
     Msg.str("");
     Msg.clear();
-    Msg << "Total: " << (int) this->LvlLength * 400;
+    Msg << "Total: " << (int) this->LvlLength * 350 + this->Width;
     LengthMsg = Msg.str();
     Msg.str("");
     Msg.clear();
 
-    if (this->State == GAME_ACTIVE) {
-        this->HUD->Draw(*Renderer);
-        Renderer->shader.SetFloat("BgTranslate", this->BgDistance);
+    if (this->State == GAME_ACTIVE || (this->State==GAME_LOSE && this->GameEndTimer > 0)) {
+        Renderer->shader.SetFloat("BgTranslate", this->BgDistance, 1);
+
         Renderer->DrawSprite(BGTexture, glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0, glm::vec3(1, 1, 1),
                              1);
-        Renderer->shader.SetFloat("BgTranslate", 0);
+        Renderer->shader.SetFloat("BgTranslate", 0, 1);
+        Renderer->shader.SetInteger("glowSprite", this->Pressed && this->State == GAME_ACTIVE, 1);
+        Renderer->shader.SetVector2f("centerCoord", glm::vec2(Renderer->Position.x + Renderer->Radius, 600 - Renderer->Position.y - Renderer->Radius), 1);
         Renderer->DrawSprite(MyTexture,
                              Renderer->Position, Renderer->Size, Renderer->Rotation, Renderer->Color, 0);
+//        Renderer->shader.SetInteger("glowSprite", 0, 0);
         for (auto coinObj: this->Coins) {
             if (!coinObj->Destroyed)
                 coinObj->Draw(*Renderer);
         }
+
+        Renderer->shader.SetInteger("glowBar", 1, 1);
         for (auto zap: this->Zappers) {
+            Renderer->shader.SetVector2f("bar1", zap->GetFirstpoint());
+            Renderer->shader.SetVector2f("bar2", zap->GetSecondPoint());
             zap->Draw(*Renderer);
         }
-        Text->RenderText(LvlMsg, 10, 0, 1, glm::vec3(1));
-        Text->RenderText(ScoreMsg, 160, 0, 1, glm::vec3(1));
-        Text->RenderText(DistMsg, 310, 0, 1, glm::vec3(1));
-        Text->RenderText(LengthMsg, 550, 0, 1, glm::vec3(1));
+        Renderer->shader.SetInteger("glowBar", 0, 1);
+
+        this->HUD->Draw(*Renderer);
+        Text->RenderText(LvlMsg, 10, 10, 1, glm::vec3(1));
+        Text->RenderText(ScoreMsg, 160, 10, 1, glm::vec3(1));
+        Text->RenderText(DistMsg, 310, 10, 1, glm::vec3(1));
+        Text->RenderText(LengthMsg, 550, 10, 1, glm::vec3(1));
     } else if (this->State == GAME_LOSE) {
         if (this->GameEndTimer > 0){
-            Renderer->shader.SetFloat("BgTranslate", this->BgDistance);
+            Renderer->shader.SetFloat("BgTranslate", this->BgDistance, 1);
             Renderer->DrawSprite(BGTexture, glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0, glm::vec3(1, 1, 1),
                                  1);
-            Renderer->shader.SetFloat("BgTranslate", 0);
+            Renderer->shader.SetFloat("BgTranslate", 0, 1);
             Renderer->DrawSprite(MyTexture,
                                  Renderer->Position, Renderer->Size, Renderer->Rotation, Renderer->Color, 0);
             for (auto coinObj: this->Coins) {

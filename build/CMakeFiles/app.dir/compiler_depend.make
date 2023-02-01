@@ -395,6 +395,7 @@ CMakeFiles/app.dir/src/game.cpp.o: ../src/game.cpp \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/random \
   /usr/include/c++/11/bits/random.h \
   /usr/include/c++/11/bits/uniform_int_dist.h \
@@ -1196,6 +1197,7 @@ CMakeFiles/app.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
+  /usr/include/c++/11/math.h \
   /usr/include/c++/11/random \
   /usr/include/c++/11/bits/random.h \
   /usr/include/c++/11/bits/uniform_int_dist.h \

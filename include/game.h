@@ -9,6 +9,7 @@
 #include "game_object.h"
 #include "text_renderer.h"
 #include <vector>
+#include <math.h>
 #include <random>
 #include <iostream>
 #include <sstream>
@@ -30,6 +31,7 @@ public:
     GameState               State;
     int                     Lvl;
     bool                    Keys[1024], Pressed;
+    std::vector<int>        LvlDesign;
     unsigned int            Width, Height;
     float                   SpriteAcc;
     float                   BgDistance, BgVelocity;
