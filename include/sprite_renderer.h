@@ -18,6 +18,7 @@ class SpriteRenderer
 public:
     glm::vec2   Position, Size, Velocity;
     glm::vec3   Color;
+    float       Radius;
     float       Rotation;
     // Constructor (inits shaders/shapes)
     SpriteRenderer(Shader &shader);

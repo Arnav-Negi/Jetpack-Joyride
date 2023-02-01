@@ -25,6 +25,7 @@ public:
     bool        IsSolid;
     bool        Destroyed;
     float       isBg;
+    bool         ZapperRigid;
     // render state
     Texture2D   Sprite;
     // constructor(s)

@@ -10,15 +10,15 @@
 #include "text_renderer.h"
 #include <vector>
 #include <random>
+#include <iostream>
+#include <sstream>
 
 // Represents the current state of the game
 enum GameState {
     GAME_ACTIVE,
-    GAME_MENU,
+    GAME_LOSE,
     GAME_WIN
 };
-
-const float COIN_VEL = -100, COIN_RAD = 25;
 
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
@@ -29,16 +29,19 @@ public:
     // game state
     GameState               State;
     int                     Lvl;
-    bool                    Keys[1024];
+    bool                    Keys[1024], Pressed;
     unsigned int            Width, Height;
     float                   SpriteAcc;
     float                   BgDistance, BgVelocity;
-
+    float                   FgDistance;
+    float                   CoinVel, CoinRad;
+    float                   LvlLength;
     std::vector<BallObject *> Coins;
     unsigned  int           Score;
     std::vector<GameObject *> Zappers;
+    GameObject *            HUD;
 
-    bool                    Dead;
+    float                   GameEndTimer;
 
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
@@ -50,10 +53,12 @@ public:
     // Update Functions
     bool CheckCollision(BallObject &one, SpriteRenderer &two);
     bool CheckCollision(GameObject &one, SpriteRenderer &two);
+    bool CheckRotatedCollision(SpriteRenderer &one, GameObject &two);
     void DoCollisions();
     void SpawnCoins();
     void SpawnZappers();
     void Die();
+    void Win();
 
     // game loop
     void ProcessInput(float dt);

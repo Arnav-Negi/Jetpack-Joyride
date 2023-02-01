@@ -6,11 +6,11 @@
 
 GameObject::GameObject()
         : Position(0.0f, 0.0f), Size(1.0f, 1.0f), Velocity(0.0f), Color(1.0f), Rotation(0.0f), Sprite(), IsSolid(false),
-          Destroyed(false) {}
+          Destroyed(false), ZapperRigid(true) {}
 
 GameObject::GameObject(glm::vec2 pos, glm::vec2 size, Texture2D sprite, glm::vec3 color, glm::vec2 velocity, float isBg)
         : Position(pos), Size(size), Velocity(velocity), Color(color), Rotation(0.0f), Sprite(sprite), IsSolid(false),
-          Destroyed(false), isBg(isBg) {}
+          Destroyed(false), isBg(isBg), ZapperRigid(true) {}
 
 void GameObject::Draw(SpriteRenderer &renderer) {
     renderer.DrawSprite(this->Sprite, this->Position, this->Size, this->Rotation, this->Color, this->isBg);
@@ -26,6 +26,8 @@ BallObject::BallObject(glm::vec2 pos, float radius, glm::vec2 velocity, Texture2
 glm::vec2 GameObject::Move(float dt, unsigned int window_height) {
     // move the ball
     this->Position += this->Velocity*dt;
+
+    if (!this->ZapperRigid) this->Rotation += 10 * dt;
 
     return this->Position;
 }
