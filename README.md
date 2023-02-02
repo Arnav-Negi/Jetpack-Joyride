@@ -1,27 +1,34 @@
-# OpenGL boilerplate
+# Mario In Space (Jetpack Joyride)
 
-## Contents
-- glfw, glad and glm built from source in `libraries`
+This is the submission for Computer Graphics assignment - 1.
 
-- Standard shader class from learnopengl.com and stb_image.h in `include`
+- Name :   Arnav Negi
+- Roll : 2021101112
 
-- CMake file to compile project (includes glfw, glad, glm and freetype)
+## Requirements
 
+The game uses `GLAD, GLFW and GLM` libraries which are included in the folder.
 
-## Instructions to build
+The `Freetype library` is required to be installed to run the game.
 
-1. <b>INITAL SETUP</b> (do this once)
+## How to Build
 
-    - Setup FreeType to render text 
-        - Linux/macOS (recommended OSes)
-            - Download the latest stable release(2.10.1) from [the official website](https://freetype.org/download.html)
-            - Run the following
-                1.  `tar -xvf freetype-2.10.1.tar.gz`
-                2.  `cd freetype-2.10.1`
-                3.  `./configure --prefix=/usr/local/freetype/2_10_1 --enable-freetype-config` : Prefix defines where freetype is installed
-                4.  `make; make install`
-        - Windows
-            - Use [this video](https://www.youtube.com/watch?v=qW_8Dyq2asc) if using VSCode (I hope you aren't)
+Go to the assignment folder named `ass1` and run the following command:
 
-2. `mkdir build; cd build`
-3. `cmake ..; make`
+```console
+~$ mkdir build; cd build
+~$ sudo cmake ..
+~$ sudo make
+~$ ./app
+```
+
+This should run the game.
+
+## Instructions to play
+
+The game consists of 3 levels, press any button to thrust Mario. The game ends when you win 
+or collide with a zapper (lose). Your score is number of coins you collect.
+
+## Notes
+
+Levels increase in difficulty due to increase in `obstacle velocity, zapper length and level length`

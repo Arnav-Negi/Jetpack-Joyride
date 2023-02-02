@@ -307,14 +307,14 @@ void Game::Render() {
         }
         else {
             Text->RenderText("YOU LOSE", this->Width / 4, this->Height / 3, 3, glm::vec3(1, 0, 0));
-            Text->RenderText(ScoreMsg, 2*this->Width /5, this->Height / 4, 1, glm::vec3(1, 0, 0));
-            Text->RenderText("Press Enter to play again", this->Width / 4, 2*this->Height / 3, 1, glm::vec3(1, 0, 0));
+            Text->RenderText(ScoreMsg, 6*this->Width /13, this->Height / 4, 1, glm::vec3(1, 0, 0));
+            Text->RenderText("Press Enter to play again", this->Width / 3, 2*this->Height / 3, 1, glm::vec3(1, 0, 0));
         }
     } else if (this->State == GAME_WIN) {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         Text->RenderText("YOU WIN !!", this->Width / 4, this->Height / 3, 3, glm::vec3(0, 1, 0));
-        Text->RenderText(ScoreMsg, 2*this->Width / 5, this->Height / 4, 1, glm::vec3(0, 1, 0));
-        Text->RenderText("Press Enter to play again", this->Width / 4, 2*this->Height / 3, 1, glm::vec3(0, 1, 0));
+        Text->RenderText(ScoreMsg, 6*this->Width / 13, this->Height / 4, 1, glm::vec3(0, 1, 0));
+        Text->RenderText("Press Enter to play again", this->Width / 3, 2*this->Height / 3, 1, glm::vec3(0, 1, 0));
     }
 }
 
